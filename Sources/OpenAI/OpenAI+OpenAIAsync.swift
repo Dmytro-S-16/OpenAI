@@ -185,6 +185,12 @@ extension OpenAI: OpenAIAsync {
             request: makeThreadsAddMessageRequest(threadId, query)
         )
     }
+
+    public func threadsAddMessage(threadId: String, query: ThreadAddMessageQuery) async throws -> ThreadAddMessageResult {
+        try await performRequestAsync(
+            request: makeThreadsAddMessageRequest(threadId, query)
+        )
+    }
     
     public func files(query: FilesQuery) async throws -> FilesResult {
         try await performRequestAsync(

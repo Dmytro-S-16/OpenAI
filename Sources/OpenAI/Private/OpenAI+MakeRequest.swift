@@ -63,6 +63,17 @@ extension OpenAI {
             body: query
         )
     }
+
+    func makeThreadsAddMessageRequest(_ threadId: String, _ query: ThreadAddMessageQuery) -> AssistantsRequest<ThreadsMessagesResult> {
+        .jsonRequest(
+            urlBuilder: RunsURLBuilder(
+                configuration: configuration,
+                path: .threadsMessages,
+                threadId: threadId
+            ),
+            body: query
+        )
+    }
     
     func makeThreadsMessagesRequest(_ threadId: String, before: String?) -> AssistantsRequest<ThreadsMessagesResult> {
         .jsonRequest(
