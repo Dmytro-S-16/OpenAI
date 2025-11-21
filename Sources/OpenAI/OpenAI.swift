@@ -171,6 +171,17 @@ final public class OpenAI: OpenAIProtocol, @unchecked Sendable {
             completion: completion
         )
     }
+
+    public func threadsAddMessage(
+        threadId: String,
+        query: ThreadAddMessageQuery,
+        completion: @escaping @Sendable (Result<ThreadAddMessageResult, Error>) -> Void
+    ) -> CancellableRequest {
+        performRequest(
+            request: makeThreadsAddMessageRequest(threadId, query),
+            completion: completion
+        )
+    }
     
     public func threadsMessages(
         threadId: String,

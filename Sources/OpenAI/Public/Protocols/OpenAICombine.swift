@@ -36,6 +36,7 @@ public protocol OpenAICombine: Sendable {
     func threadsMessages(threadId: String) -> AnyPublisher<ThreadsMessagesResult, Error>
     func threadsMessages(threadId: String, before: String?) -> AnyPublisher<ThreadsMessagesResult, Error>
     func threadsAddMessage(threadId: String, query: MessageQuery) -> AnyPublisher<ThreadAddMessageResult, Error>
+    func threadsAddMessage(threadId: String, query: ThreadAddMessageQuery) -> AnyPublisher<ThreadAddMessageResult, Error>
     func files(query: FilesQuery) -> AnyPublisher<FilesResult, Error>
 }
 #endif

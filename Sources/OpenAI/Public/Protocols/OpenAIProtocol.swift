@@ -434,6 +434,24 @@ public protocol OpenAIProtocol: OpenAIModern {
      Returns a `Result` of type `ThreadAddMessageResult` if successful, or an `Error` if an error occurs.
      **/
     @discardableResult func threadsAddMessage(threadId: String, query: MessageQuery, completion: @escaping @Sendable (Result<ThreadAddMessageResult, Error>) -> Void) -> CancellableRequest
+
+    /**
+     This function sends a thread id and message contents to the OpenAI API and returns a run.
+     
+     Example: Add Message to Thread
+     ```
+     let query = ThreadAddMessageQuery(role: message.role, content: message.content, fileIds: fileIds)
+     openAI.threadsAddMessage(threadId: currentThreadId, query: query) { result in
+     //Handle response here
+     }
+     ```
+     
+     - Parameter threadId: The thread id for the thread to run.
+     - Parameter query: The `ThreadAddMessageQuery` instance, containing the information required for the threads request.
+     - Parameter completion: The completion handler to be executed upon completion of the runRetrieve request.
+     Returns a `Result` of type `ThreadAddMessageResult` if successful, or an `Error` if an error occurs.
+     **/
+    @discardableResult func threadsAddMessage(threadId: String, query: ThreadAddMessageQuery, completion: @escaping @Sendable (Result<ThreadAddMessageResult, Error>) -> Void) -> CancellableRequest
     
     /**
      This function sends a purpose string, file contents, and fileName contents to the OpenAI API and returns a file id result.

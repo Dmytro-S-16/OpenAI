@@ -180,6 +180,12 @@ extension OpenAI: OpenAICombine {
             request: makeThreadsAddMessageRequest(threadId, query)
         )
     }
+
+    public func threadsAddMessage(threadId: String, query: ThreadAddMessageQuery) -> AnyPublisher<ThreadAddMessageResult, Error> {
+        performRequestCombine(
+            request: makeThreadsAddMessageRequest(threadId, query)
+        )
+    }
     
     public func files(query: FilesQuery) -> AnyPublisher<FilesResult, Error> {
         performRequestCombine(

@@ -36,5 +36,6 @@ public protocol OpenAIAsync: Sendable {
     func threadsMessages(threadId: String) async throws -> ThreadsMessagesResult
     func threadsMessages(threadId: String, before: String?) async throws -> ThreadsMessagesResult
     func threadsAddMessage(threadId: String, query: MessageQuery) async throws -> ThreadAddMessageResult
+    func threadsAddMessage(threadId: String, query: ThreadAddMessageQuery) async throws -> ThreadAddMessageResult
     func files(query: FilesQuery) async throws -> FilesResult
 }
