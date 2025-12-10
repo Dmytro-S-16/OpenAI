@@ -99,23 +99,24 @@ public struct ThreadAddMessageQuery: Equatable, Codable, Sendable {
 
 	public init(
 		role: ChatQuery.ChatCompletionMessageParam.Role,
-		content: String,
+		content: String?,
 		fileIds: [String]? = nil
 	) {
 		self.role = role
 		if let fileIds, !fileIds.isEmpty {
 			var contentParts: [ContentPart] = []
-			contentParts.append(.text(text: content))
+			if let content {
+				contentParts.append(.text(text: content))
+			}
 			for fileId in fileIds {
 				contentParts.append(.imageFile(fileId: fileId))
 			}
 			self.content = .contentArray(contentParts)
 		} else {
-			self.content = .string(content)
+			self.content = .string(content ?? "")
 		}
 	}
 
-	// New initializer with content array
 	public init(
 		role: ChatQuery.ChatCompletionMessageParam.Role,
 		content: [ContentPart]
@@ -123,4 +124,13 @@ public struct ThreadAddMessageQuery: Equatable, Codable, Sendable {
 		self.role = role
 		self.content = .contentArray(content)
 	}
+
+	public init(
+		role: ChatQuery.ChatCompletionMessageParam.Role,
+		fileIds: [String]
+	) {
+		self.role = role
+		self.content = .contentArray(fileIds.map { .imageFile(fileId: $0) })
+	}
+
 }
