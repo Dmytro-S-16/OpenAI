@@ -53,6 +53,12 @@ public extension Model {
     @available(*, deprecated, message: "On April 14th, 2025, developers were notified that the gpt-4.5-preview model is deprecated and will be removed from the API in the coming months. Recommended replacement: gpt-4.1")
     static let gpt4_5_preview = "gpt-4.5-preview"
 
+    // GPT-5.2
+
+    static let gpt5_2 = "gpt-5.2"
+
+    static let gpt5_2_chat_latest = "gpt-5.2-chat-latest"
+
     // GPT-5.1
 
     /// `gpt-5.1` Enhanced version of GPT-5 with improved reasoning and performance
