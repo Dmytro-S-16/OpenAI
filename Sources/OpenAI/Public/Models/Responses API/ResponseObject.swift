@@ -29,7 +29,7 @@ public struct ResponseObject: Codable, Equatable, Sendable {
     /// Inserts a system (or developer) message as the first item in the model's context.
     ///
     /// When using along with `previous_response_id`, the instructions from a previous response will not be carried over to the next response. This makes it simple to swap out system (or developer) messages in new responses.
-    public let instructions: String?
+    // public let instructions: String?
     
     /// An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](https://platform.openai.com/docs/guides/reasoning).
     public let maxOutputTokens: Int?
@@ -108,7 +108,7 @@ public struct ResponseObject: Codable, Equatable, Sendable {
         case error
         case id
         case incompleteDetails = "incomplete_details"
-        case instructions
+        // case instructions
         case maxOutputTokens = "max_output_tokens"
         case metadata
         case model
@@ -134,7 +134,7 @@ public struct ResponseObject: Codable, Equatable, Sendable {
         self.error = try container.decodeIfPresent(Schemas.ResponseError.self, forKey: .error)
         self.id = try container.decode(String.self, forKey: .id)
         self.incompleteDetails = try container.decodeIfPresent(IncompleteDetails.self, forKey: .incompleteDetails)
-        self.instructions = try? container.decodeIfPresent(String.self, forKey: .instructions)
+        // self.instructions = try? container.decodeIfPresent(String.self, forKey: .instructions)
         self.maxOutputTokens = try container.decodeIfPresent(Int.self, forKey: .maxOutputTokens)
         self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata) ?? [:]
         self.model = try container.decode(String.self, forKey: .model)
